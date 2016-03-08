@@ -1,0 +1,4 @@
+auth             required       pam_yubico.so authfile=/etc/yubkey_mappings id=16 debug
+<% if node[:enable_ldap] == true %>
+auth             required       pam_ldap.so use_first_pass
+<% end %>

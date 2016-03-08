@@ -1,0 +1,32 @@
+include         /etc/openldap/schema/core.schema
+include         /etc/openldap/schema/cosine.schema
+include         /etc/openldap/schema/inetorgperson.schema
+include         /etc/openldap/schema/nis.schema
+allow bind_v2
+pidfile         /var/run/openldap/slapd.pid
+argsfile        /var/run/openldap/slapd.args
+
+access to attrs=userPassword
+        by dn="uid=root,ou=People,dc=nclouds,dc=com" write
+        by dn="cn=admin,dc=nclouds,dc=com" write
+        by anonymous auth
+        by self write
+        by * none
+
+
+access to dn.base="" by * read
+
+access to *
+         by dn="cn=admin,dc=nclouds,dc=com" write
+         by * read
+
+
+database        bdb
+
+suffix          "dc=nclouds,dc=com"
+
+rootdn          "cn=admin,dc=nclouds,dc=com"
+rootpw          <%=node[:ldap_password]%>
+
+directory       /var/lib/openldap-data
+index   objectClass     eq

@@ -1,0 +1,8 @@
+Alias /phpldapadmin /usr/share/phpldapadmin/htdocs
+Alias /ldapadmin /usr/share/phpldapadmin/htdocs
+
+<Directory /usr/share/phpldapadmin/htdocs>
+Options FollowSymLinks
+    AllowOverride FileInfo Options
+    Require all granted
+</Directory>

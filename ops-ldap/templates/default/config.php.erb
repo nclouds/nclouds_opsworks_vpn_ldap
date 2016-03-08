@@ -1,0 +1,18 @@
+<?php
+$config->custom->session['blowfish'] = '92c420ec6268edd43bc986f3e28e6f75';  
+$config->custom->appearance['friendly_attrs'] = array(
+	'facsimileTelephoneNumber' => 'Fax',
+	'gid'                      => 'Group',
+	'mail'                     => 'Email',
+	'telephoneNumber'          => 'Telephone',
+	'uid'                      => 'User Name',
+	'userPassword'             => 'Password'
+);
+
+$servers = new Datastore();
+$servers->newServer('ldap_pla');
+$servers->setValue('server','name','Local LDAP Server');
+$servers->setValue('appearance','password_hash','');
+$servers->setValue('login','attr','dn');
+
+?>
